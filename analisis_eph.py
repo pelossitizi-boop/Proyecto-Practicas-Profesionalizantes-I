@@ -61,3 +61,40 @@ plt.title("Distribución de integrantes por hogar")
 plt.xlabel("Cantidad de integrantes")
 plt.ylabel("Cantidad de hogares")
 plt.show()
+# LIMPIEZA DE DATOS
+
+df_clean = df.copy()
+
+variables = ["NIVEL_ED", "IV12_3", "II7"]
+
+for columna in variables:
+    df_clean[columna] = df_clean[columna].replace([-9, 9, 99], np.nan)
+
+df_clean.to_csv("df_clean.csv", index=False)
+
+
+# ANALISIS EXPLORATORIO BIVARIADO (EDA)
+
+# Ingreso promedio según tenencia de computadora
+print("INGRESO PROMEDIO SEGUN TENENCIA DE COMPUTADORA")
+print(df_clean.groupby("IV12_3")["ITF"].mean())
+
+# Computadora según decil de ingresos
+print("\nCOMPUTADORA SEGUN DECIL DE INGRESOS")
+print(pd.crosstab(
+    df_clean["DECIFR"],
+    df_clean["IV12_3"],
+    normalize="index"
+).round(3) * 100)
+
+# Ingreso promedio según acceso a Internet
+print("\nINGRESO PROMEDIO SEGUN ACCESO A INTERNET")
+print(df_clean.groupby("II7")["ITF"].mean())
+
+# Internet según decil de ingresos
+print("\nINTERNET SEGUN DECIL DE INGRESOS")
+print(pd.crosstab(
+    df_clean["DECIFR"],
+    df_clean["II7"],
+    normalize="index"
+).round(3) * 100)

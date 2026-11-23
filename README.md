@@ -47,3 +47,9 @@ Se utiliza un conjunto de datos sintético generado mediante Python, basado en v
 Resultados esperados
 
 Se espera identificar patrones y posibles desigualdades en el acceso a la tecnología, para comprender mejor la problemática de la brecha digital.
+
+Organización del proyecto
+
+Se utilizó GitHub Projects para organizar las tareas mediante un tablero de metodología ágil, dividido en tres estados: Por hacer, En proceso y Terminado.
+
+Enlace al tablero: https://github.com/users/pelossitizi-boop/projects/1

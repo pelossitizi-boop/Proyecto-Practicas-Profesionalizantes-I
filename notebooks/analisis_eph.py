@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # 1. Cargar el conjunto de datos
-df = pd.read_csv("eph_tecnologia_microdatos.csv")
+df = pd.read_csv("../data/eph_tecnologia_microdatos.csv")
 
 # 2. Mostrar las primeras filas
 print("PRIMEROS REGISTROS DEL DATASET")

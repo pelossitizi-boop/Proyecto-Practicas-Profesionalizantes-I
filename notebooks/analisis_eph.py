@@ -9,6 +9,23 @@ df = pd.read_csv("../data/eph_tecnologia_microdatos.csv")
 print("PRIMEROS REGISTROS DEL DATASET")
 display(df.head())
 
+# 3. LIMPIEZA DE DATOS
+df_clean = df.copy()
+
+columnas_limpieza = ["NIVEL_ED", "IV12_3", "II7"]
+
+for columna in columnas_limpieza:
+    df_clean[columna] = df_clean[columna].replace([-9, 9, 99], np.nan)
+
+print("DATOS DESPUÉS DE LA LIMPIEZA")
+print("Cantidad de registros:", len(df_clean))
+print("Valores faltantes por variable:")
+display(df_clean[columnas_limpieza].isna().sum())
+
+# Exportar dataset limpio
+df_clean.to_csv("../data/df_clean.csv", index=False)
+df = df_clean
+
 # 3. Estadísticas descriptivas
 variables = ["ITF", "IX_TOT", "NIVEL_ED", "DECIFR"]
 
